@@ -1,0 +1,38 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#canvas{
+  position: absolute;
+}
+
+.objectDiv{
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 70%;
+  z-index: 100000;
+}
+
+.fallingObject{
+  position: absolute;
+  z-index: 40;
+}
+
+.overlay{
+  height: 60px;
+  width: 100%;
+  z-index: 50;
+  background-color: white;
+}
