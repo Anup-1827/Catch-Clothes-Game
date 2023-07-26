@@ -36,3 +36,11 @@
   z-index: 50;
   background-color: white;
 }
+
+.poof{
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: -30px;
+  left: 11px;
+}

@@ -77,9 +77,14 @@ const fallObject = (assets, fallingObjRef, objectDivRef, overlayRef)=>{
                         // console.log("Going In ,",`asset_${idx}`);
                         assetDiv.remove()
                         clearInterval(interval)
+                        document.querySelector('.poof').style.display = "block";
+                        
+                        setTimeout(()=>{
+                            document.querySelector('.poof').style.display = "none";
+                        },100)
                     }
 
-        
+                    
                     const overlayDiv = overlayRef.current.getBoundingClientRect();
                     if(fy1plusfh >= overlayDiv.top + overlayDiv.height){
                         assetDiv.remove()

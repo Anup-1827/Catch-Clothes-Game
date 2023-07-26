@@ -10,6 +10,7 @@ import { detector } from './Methods/detector';
 import bucket from "./assets/bucket.png"
 import { assetsArrr } from './assets/assets';
 import fallObject from './Methods/fallObject';
+import poof from "./assets/poof.gif"
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
   const objectDivRef = useRef(null);
   const fallingObjRef = useRef(null);
   const overlayRef = useRef(null);
+  const poofRef = useRef(null)
 
   let detectorInterval 
 
@@ -59,6 +61,9 @@ function App() {
       </canvas>
 
       <div ref={objectDivRef} className='objectDiv'>
+      <div ref={poofRef} className='poof'>
+        <img width={40} height={30} src={poof}/>
+        </div>
         <img src={bucket} alt="bucket"/>
       </div>
 
