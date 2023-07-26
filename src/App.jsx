@@ -14,7 +14,8 @@ import poof from "./assets/poof.gif"
 
 
 function App() {
-  const [isSetVideoStyle, setIsSetVideoStyle] = useState(false)
+  const [isSetVideoStyle, setIsSetVideoStyle] = useState(false);
+  const [allClothesPassed, setAllClothesPassed] = useState(null)
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const objectDivRef = useRef(null);
@@ -22,11 +23,17 @@ function App() {
   const overlayRef = useRef(null);
   const poofRef = useRef(null)
 
-  let detectorInterval 
+  let detectorInterval
 
   useEffect(()=>{
+    console.log("length ", assetsArrr.length);
+    const newVisibleAssetArr = new Array(assetsArrr.length).fill("notInScreen")
+    setAllClothesPassed([...newVisibleAssetArr])
+  },[])
+  
+  useEffect(()=>{
     if(isSetVideoStyle){
-      fallObject(assetsArrr, fallingObjRef, objectDivRef, overlayRef)
+      fallObject(assetsArrr, fallingObjRef, objectDivRef, overlayRef, allClothesPassed, setAllClothesPassed)
     }
   },[isSetVideoStyle])
 

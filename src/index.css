@@ -35,6 +35,9 @@
   width: 100%;
   z-index: 50;
   background-color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .poof{

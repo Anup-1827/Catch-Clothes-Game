@@ -1,4 +1,4 @@
-const fallObject = (assets, fallingObjRef, objectDivRef, overlayRef)=>{
+const fallObject = (assets, fallingObjRef, objectDivRef, overlayRef, allClothesPassed, setAllClothesPassed)=>{
 
     assets.forEach((source, idx) => {
         // if(idx == 0){
@@ -32,6 +32,8 @@ const fallObject = (assets, fallingObjRef, objectDivRef, overlayRef)=>{
                 // console.log(element);
         
                 fallingObjRef.current.appendChild(image)
+
+                allClothesPassed[idx] = "insideScreen";
         
                 const interval =  setInterval(()=>{
                     const assetDiv = document.querySelector(`.asset_${idx}`);
@@ -78,6 +80,13 @@ const fallObject = (assets, fallingObjRef, objectDivRef, overlayRef)=>{
                         assetDiv.remove()
                         clearInterval(interval)
                         document.querySelector('.poof').style.display = "block";
+
+                        allClothesPassed[idx] = "caught";
+
+                        if(allClothesPassed && !allClothesPassed?.includes("notInScreen") && !allClothesPassed?.includes("insideScreen")){
+                            const caughtClothes = allClothesPassed.filter(item => item === "caught")
+                            overlayRef.current.innerText = `You Caught ${caughtClothes.length} Clothes`
+                          }
                         
                         setTimeout(()=>{
                             document.querySelector('.poof').style.display = "none";
@@ -89,6 +98,12 @@ const fallObject = (assets, fallingObjRef, objectDivRef, overlayRef)=>{
                     if(fy1plusfh >= overlayDiv.top + overlayDiv.height){
                         assetDiv.remove()
                         clearInterval(interval)
+                        allClothesPassed[idx] = "removed";
+
+                        if(allClothesPassed && !allClothesPassed?.includes("notInScreen") && !allClothesPassed?.includes("insideScreen")){
+                            const caughtClothes = allClothesPassed.filter(item => item === "caught")
+                            overlayRef.current.innerText = `You Caught ${caughtClothes.length} Clothes`
+                          }
                     }
                 },10)
             }, source.startTime )
